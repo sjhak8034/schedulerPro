@@ -7,14 +7,15 @@
 ### 요약
 |기능|	method|	url	|request	|response	|status|
 |-------------|----|---------------|-----------|---------|--------------|
-|일정 작성|POST|	/schedules/users/|	요청 body	|등록 정보	|200: 정상 등록|
-|일정 목록 조회|GET|/schedules/users/|	요청 param	|다건 응답 정보	|200: 정상 조회|
+|일정 작성|POST|	/schedules/|	요청 body	|등록 정보	|200: 정상 등록|
+|일정 목록 조회|GET|/schedules/|	요청 param	|다건 응답 정보	|200: 정상 조회|
 |특정 일정 조회|GET|/schedules/{scheduleId}|	요청 param|	단건 응답 정보|	200: 정상 조회|
 |일정 수정|PUT|/schedules/{scheduleId}|	요청 body	|수정 정보	|200: 정상 수정|
 |일정 삭제|DELETE|/schedules/{scheduleId}|	요청 param	|삭제 정보	|200: 정상 삭제|
-|유저 등록|POST|/schedules/register|요청 body|등록 정보|200: 정상 등록|
-|유저 조회|GET|/schedules/user-profile/{userId}|요청 body|등록 정보|200: 정상 조회|
-|유저 수정|PUT|/schedules/user-profile/{userId}|요청 body|수정 정보|200: 정상 수정|
+|유저 등록|POST|/users/signup|요청 body|등록 정보|200: 정상 등록|
+|유저 조회|GET|/users/user-profile/{userId}|요청 body|등록 정보|200: 정상 조회|
+|유저 수정|PUT|/users/user-profile/{userId}|요청 body|수정 정보|200: 정상 수정|
+|유저 로그인|GET|/users/signin|요청 body|수정 정보|200: 정상 로그인|
 ### 일정 작성 
 * POST /schedules/
 * 요청 Request
@@ -268,6 +269,8 @@
 
 
 * 응답
+   * header:
+     * cookie: SessionId  
    * Status Code: 200 OK
    * Body:
 ```
@@ -316,6 +319,8 @@
 |3|수정한 이메일|email|String|x|@xxxx.com 형식|
 
 * 응답
+   * header:
+     * cookie: SessionId  
    * Status Code: 200 OK
    * Body:
 ```
@@ -333,6 +338,55 @@
 |2|이메일|email|String|x|@xxxx.com형식|
 |3|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
 |4|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
+
+
+### 유저 로그인
+* PUT /users/signin
+* 요청
+    * Header:
+       * Content-Type: application/json
+       * cookie: SessionId
+     
+         
+|#|변수 설명|변수 이름|	타입|	Nullable|description|
+|-|-|-|-|-|-|
+|1|세션 아이디|SessionId|String|x|JSESSIONID|
+ 
+   *Body:
+```
+{
+     "email" : "이메일"
+     "password":"비밀번호",
+}
+```
+ 
+|#|변수 설명|변수 이름|타입|Nullable|description|
+|-|--------|---------|---|---|--|
+|1|이메일|email|String|x|@xxxx.com 형식|
+|2|비밀번호|password|String|x|20글자 제한|
+
+
+* 응답
+   * header:
+     * cookie: SessionId  
+   * Status Code: 200 OK
+   * Body:
+```
+{
+    "userName" : "이름",
+    "email" : "이메일",
+    "createdAt": "생성일",
+    "modifiedAt": "수정일"
+}
+```
+
+|#|변수 설명|변수 이름|	타입|	Nullable|description|
+|-|-|-|-|-|-|
+|1|유저 이름|userName|String|x|20글자 제한|
+|2|이메일|email|String|x|@xxxx.com형식|
+|3|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
+|4|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
+
 
 ## 2. ERD
 ![image](https://github.com/user-attachments/assets/5739eab7-6dc6-4cab-8cf8-8d210f92440a)
