@@ -21,6 +21,8 @@
   * Header:
      * Content-Type: application/json
      * Cookie: SessionId
+   
+       
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|--------|---------|---|---|--|
 |1|세션 아이디|SessionId|String|x|JSESSIONID|
@@ -163,6 +165,8 @@
      * Content-Type: application/json
      * path Variable: scheduleid
      * Cookie: SessionId
+    
+       
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
@@ -196,6 +200,8 @@
     "editedAt": "YYYY-MM-DD HH:mm:ss"
 }
 ```
+
+
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
@@ -213,6 +219,8 @@
      * Content-Type: application/json
      * Path Variable: scheduleId
      * Cookie: SessionId
+ 
+       
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|--------|---------|---|---|--|
 |1|게시글 고유 번호|scheduleId|long|x|AUTO_INCREMENT|
