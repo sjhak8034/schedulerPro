@@ -6,7 +6,7 @@
 ## 1. 일정 관리 API 명세서
 
 <details>
-<summary>접기/펼치기</summary>
+<summary>요약</summary>
 
 ### 요약
 |기능|	method|	url	|request	|response	|status|
@@ -22,6 +22,9 @@
 |유저 로그인|GET|/users/signin|요청 body|수정 정보|200: 정상 로그인|
 
 </details>
+
+<details>
+<summary>일정 작성 </summary>
 
 ### 일정 작성 
 * POST /schedules/
@@ -72,6 +75,7 @@
 
 ```
 
+</details>
 
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|-|-|-|-|-|
