@@ -186,7 +186,7 @@
 * 응답
   * Status Code: 200 OK
   * Body:
-
+```
 {
     "scheduleId": "게시글 고유 번호",
     "title": "제목",
@@ -195,6 +195,7 @@
     "createdAt": "YYYY-MM-DD HH:mm:ss",
     "editedAt": "YYYY-MM-DD HH:mm:ss"
 }
+```
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
@@ -212,7 +213,7 @@
      * Content-Type: application/json
      * Path Variable: scheduleId
      * Cookie: SessionId
- |#|변수 설명|변수 이름|타입|Nullable|description|
+|#|변수 설명|변수 이름|타입|Nullable|description|
 |-|--------|---------|---|---|--|
 |1|게시글 고유 번호|scheduleId|long|x|AUTO_INCREMENT|
 |2|세션 아이디|SessionId|String|x|JSESSIONID|
@@ -221,9 +222,11 @@
 * 응답
    * Status Code: 200 OK
    * Body:
+```  
 {
-    "scheduleId": 식별자자
+    "scheduleId": 식별자
 }
+```
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|삭제된 게시글 식별자|scheduleId|long|x|AUTO-INCREMENT|
@@ -257,6 +260,7 @@
 * 응답
    * Status Code: 200 OK
    * Body:
+```
 {
     "userId": 식별자 번호,
     "userName": "유저이름",
@@ -264,6 +268,7 @@
     "createdAt": "생성일",
     "modifiedAt": "수정일"
 }
+```
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|생성된 유저 식별자|userId|long|x|AUTO-INCREMENT|
