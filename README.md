@@ -301,12 +301,15 @@
 * 응답
    * Status Code: 200 OK
    * Body:
+```
 {
     "userName" : "이름",
     "email" : "이메일",
     "createdAt": "생성일",
     "modifiedAt": "수정일"
 }
+```
+
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|유저 이름|userName|String|x|20글자 제한|
@@ -319,8 +322,6 @@
 
 
 
-jdbcTemplate.update("update user set user_name= ?, edit_date = ?, email = ? where user_id = ?",
-                entity.getUserName(), entity.getEditDate(), entity.getEmail(), entity.getUserId());
-```
+
 ## 4. Postman API 명세서
 https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/documentation/39355348-3b4eb661-11b8-4878-8829-ce1b5fd04a5a
