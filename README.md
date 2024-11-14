@@ -47,7 +47,7 @@
 {
     "title": "제목",
     "content": "할일",
-    "userName": "이름"
+ 
 }
 ```
 
@@ -56,7 +56,7 @@
 |-|--------|---------|---|---|--|
 |1|제목|title|String|x|20글자 제한|
 |2|할일|content|String|x|200글자 제한|
-|3|작성자명|userName|String|x|20글자 제한|
+
 
 
 * 응답 Response
