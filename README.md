@@ -45,7 +45,7 @@
  
  ```
 {
-    "title": "제목목",
+    "title": "제목",
     "content": "할일",
     "userName": "이름"
 }
