@@ -136,7 +136,7 @@
 ```
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|--------|---------|---|---|--|
-|1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
+|1|게시글 고유 번호|scheduleId|long|x|AUTO-INCREMENT|
 |2|제목|title|String|x|20글자 제한|
 |3|작성자명|userName|String|x|20글자 제한|
 |4|작성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
@@ -159,7 +159,7 @@
  
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
-|1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
+|1|게시글 고유 번호|scheduleId|long|x|AUTO-INCREMENT|
 |2|세션 아이디|SessionId|String|x|JSESSIONID|
 * 응답
    * Status Code: 200 OK
@@ -177,7 +177,7 @@
 
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|-|-|-|-|-|
-|1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
+|1|게시글 고유 번호|scheduleId|long|x|AUTO-INCREMENT|
 |2|제목|title|String|x|20글자 제한|
 |3|할일 내용|content|String|x||
 |4|작성자명|userName|String|x|20글자 제한|
@@ -200,7 +200,7 @@
        
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
-|1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
+|1|게시글 고유 번호|scheduleId|long|x|AUTO-INCREMENT|
 |2|세션 아이디|SessionId|String|x|JSESSIONID|
 
    * Body:
@@ -235,7 +235,7 @@
 
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
-|1|게시글 고유 번호|scheduleId|int|x|AUTO-INCREMENT|
+|1|게시글 고유 번호|scheduleId|long|x|AUTO-INCREMENT|
 |2|제목|title|String|x|20글자 제한|
 |3|할일 내용|content|String|x||
 |4|작성자명|userName|String|x|20글자 제한|
