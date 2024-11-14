@@ -4,6 +4,10 @@
 * [ERD](#2-ERD)
 * [Postman API 명세서](#4-PostMan-API-명세서)
 ## 1. 일정 관리 API 명세서
+
+<details>
+<summary>접기/펼치기</summary>
+
 ### 요약
 |기능|	method|	url	|request	|response	|status|
 |-------------|----|---------------|-----------|---------|--------------|
@@ -16,6 +20,9 @@
 |유저 조회|GET|/users/user-profile/{userId}|요청 body|등록 정보|200: 정상 조회|
 |유저 수정|PUT|/users/user-profile/{userId}|요청 body|수정 정보|200: 정상 수정|
 |유저 로그인|GET|/users/signin|요청 body|수정 정보|200: 정상 로그인|
+
+</details>
+
 ### 일정 작성 
 * POST /schedules/
 * 요청 Request
