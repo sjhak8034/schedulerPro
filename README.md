@@ -234,6 +234,10 @@
 * 요청
    * Header:
     * Content-Type: application/json
+    * sessionId: 세션 아이디
+|#|변수 설명|변수 이름|	타입|	Nullable|description|
+|-|-|-|-|-|-|
+|1|세션 아이디|SessionId|String|x|JSESSIONID|
     
 ```
 {
@@ -265,22 +269,25 @@
 |1|생성된 유저 식별자|userId|long|x|AUTO-INCREMENT|
 |2|유저 이름|userName|String|x|20글자 제한|
 |3|이메일|email|String|x|@xxxx.com형식|
-
+|4|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
+|5|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
 
 ### 유저 수정
-* PUT /schedules/user-profile/{userId}
+* PUT /users/user-profile/
 * 요청
     * Header:
        * Content-Type: application/json
-       * Path Variable: userId
- |#|변수 설명|변수 이름|타입|Nullable|description|
-|-|--------|---------|---|---|--|
-|1|유저 식별자|userId|long|x|AUTO_INCREMENT|
+       * cookie: SessionId
+|#|변수 설명|변수 이름|	타입|	Nullable|description|
+|-|-|-|-|-|-|
+|1|세션 아이디|SessionId|String|x|JSESSIONID|
+ 
    *Body:
 ```
 {
     "userName" : "이름",
+    "password":"비밀번호",
     "email" : "이메일"
 }
 ```
@@ -288,19 +295,24 @@
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|--------|---------|---|---|--|
 |1|수정한 이름|userName|String|x|20글자 제한|
-|1|수정한 이메일|email|String|x|@xxxx.com 형식|
+|2|수정한 비밀번호|password|String|x|20글자 제한|
+|3|수정한 이메일|email|String|x|@xxxx.com 형식|
 
 * 응답
    * Status Code: 200 OK
    * Body:
 {
-    "scheduleId": 12,
-    "result": 1
+    "userName" : "이름",
+    "email" : "이메일",
+    "createdAt": "생성일",
+    "modifiedAt": "수정일"
 }
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
-|1|수정한 유저의 게시글 식별자|userId|long|x|AUTO-INCREMENT|
-|2|결과|result|int|x|1은 성공|
+|1|유저 이름|userName|String|x|20글자 제한|
+|2|이메일|email|String|x|@xxxx.com형식|
+|3|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
+|4|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
 ## 2. ERD
 ![image](https://github.com/user-attachments/assets/5739eab7-6dc6-4cab-8cf8-8d210f92440a)
