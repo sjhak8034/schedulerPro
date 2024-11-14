@@ -238,7 +238,9 @@
    * Header:
     * Content-Type: application/json
     * sessionId: 세션 아이디
-|#|변수 설명|변수 이름|	타입|	Nullable|description|
+ 
+      
+|#|변수 설명|변수 이름|타입|Nullable|description|
 |-|-|-|-|-|-|
 |1|세션 아이디|SessionId|String|x|JSESSIONID|
     
@@ -284,6 +286,8 @@
     * Header:
        * Content-Type: application/json
        * cookie: SessionId
+     
+         
 |#|변수 설명|변수 이름|	타입|	Nullable|description|
 |-|-|-|-|-|-|
 |1|세션 아이디|SessionId|String|x|JSESSIONID|
