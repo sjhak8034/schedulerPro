@@ -23,8 +23,10 @@
 
 </details>
 
+
 <details>
-<summary>일정 작성 </summary>
+<summary>### 일정 작성 </summary>
+
 
 ### 일정 작성 
 * POST /schedules/
@@ -75,7 +77,7 @@
 
 ```
 
-</details>
+
 
 |#|변수 설명|변수 이름|타입|Nullable|description|
 |-|-|-|-|-|-|
@@ -85,6 +87,9 @@
 |4|작성자명|userName|String|x|20글자 제한|
 |5|작성일|createAt|String|x|YYYY-MM-DD|
 |6|수정일|modifiedAt|String|x|YYYY-MM-DD|
+
+
+</details>
 
 ### 특정기간 일정 목록 조회
 * GET /schedules/?startDate=2024-11-05&endDate=2024-11-11&schedulePage=1&pageSize=5
