@@ -32,7 +32,7 @@
 {
     "title": "제목목",
     "content": "할일",
-    "userName": "김민수"
+    "userName": "이름"
 }
 ```
 
