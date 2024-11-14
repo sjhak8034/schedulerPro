@@ -25,7 +25,7 @@
 
 
 <details>
-<summary>### 일정 작성 </summary>
+<summary>일정 작성 </summary>
 
 
 ### 일정 작성 
@@ -91,6 +91,10 @@
 
 </details>
 
+
+<details>
+<summary>특정기간 일정 목록 조회 </summary>
+
 ### 특정기간 일정 목록 조회
 * GET /schedules/?startDate=2024-11-05&endDate=2024-11-11&schedulePage=1&pageSize=5
 * 요청 Request
@@ -139,7 +143,12 @@
 |5|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
 
+</details>
 
+<details>
+<summary>특정 일정 조회</summary>
+
+ 
 ### 특정 일정 조회
 * GET /schedules/{scheduleId}
 * 요청 Request
@@ -174,6 +183,11 @@
 |4|작성자명|userName|String|x|20글자 제한|
 |5|작성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
 |6|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
+
+</details>
+
+<details>
+<summary>일정 수정</summary>
 
 ### 일정 수정
 * PUT /schedules/{scheduleId}
@@ -228,6 +242,10 @@
 |5|작성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
 |6|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
+</details>
+
+<details>
+<summary>일정 삭제</summary>
 
 ### 일정 삭제
 * DELETE /schedules/{scheduleId}
@@ -256,6 +274,10 @@
 |-|-|-|-|-|-|
 |1|삭제된 게시글 식별자|scheduleId|long|x|AUTO-INCREMENT|
 
+</details>
+
+<details>
+<summary>유저 등록</summary>
 
 ### 유저 등록
 * Post /users/signup
@@ -306,6 +328,10 @@
 |4|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
 |5|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
+</details>
+
+<details>
+<summary>유저 수정</summary>
 
 ### 유저 수정
 * PUT /users/user-profile/
@@ -355,6 +381,10 @@
 |3|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
 |4|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
+</details>
+
+<details>
+<summary>유저 로그인</summary>
 
 ### 유저 로그인
 * PUT /users/signin
@@ -403,6 +433,7 @@
 |3|생성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
 |4|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
+</details>
 
 ## 2. ERD
 ![image](https://github.com/user-attachments/assets/5739eab7-6dc6-4cab-8cf8-8d210f92440a)
