@@ -112,7 +112,7 @@
 |-|--------|---------|---|---|--|
 |1|시작 일|startDate|String|x|YYYY-MM-DD|
 |2|마지막 일|endDate|String|x|YYYY-MM-DD|
-|4||조회할 페이지|long|x|최소 1|
+|4|조회할 페이지|long|x|최소 1|
 |5|게시글 수|pageSize|long|x|최소 1|
 |6|세션 아이디|SessionId|String|x|JSESSIONID|
 
