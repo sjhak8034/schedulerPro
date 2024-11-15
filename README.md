@@ -2,7 +2,7 @@
 # 목차
 * [일정 관리 API 명세서](#1-일정-관리-API-명세서)
 * [ERD](#2-ERD)
-* [Postman API 명세서](#4-PostMan-API-명세서)
+* [Postman API 명세서](#3-PostMan-API-명세서)
 ## 1. 일정 관리 API 명세서
 
 <details>
@@ -29,7 +29,7 @@
 
 
 ### 일정 작성 
-* POST /schedules/
+* POST /schedules
 * 요청 Request
   * Header:
      * Content-Type: application/json
@@ -71,8 +71,8 @@
     "title": "제목",
     "content": "할일",
     "userName": "이름",
-    "createdAt": "2024-11-14",
-    "modifiedAt": "2024-11-14",
+    "createdAt": "2024-11-15T14:31:49.2651537",
+    "modifiedAt": "2024-11-15T14:31:49.2651537"
 }
 
 ```
@@ -103,8 +103,6 @@
     * request parameters:
        * startDate (optional) : 조회할 작성일 (시작) (YYYY-MM-DD)
        * endDate (optional) : 조회할 작성일 (끝) (YYYY-MM-DD)
-       * schedulePage  : 조회할 페이지
-       * pageSize : 한 페이지당 게시글 수
      * Cookie: SessionId
   * 정렬: 작성일 기준 내림차순
  
@@ -112,9 +110,7 @@
 |-|--------|---------|---|---|--|
 |1|시작 일|startDate|String|x|YYYY-MM-DD|
 |2|마지막 일|endDate|String|x|YYYY-MM-DD|
-|4|조회할 페이지|schedulePage|long|x|최소 1|
-|5|게시글 수|pageSize|long|x|최소 1|
-|6|세션 아이디|SessionId|String|x|JSESSIONID|
+|3|세션 아이디|SessionId|String|x|JSESSIONID|
 
 
 * 응답
@@ -128,8 +124,7 @@
         "scheduleId": "게시글 고유 번호",
         "title": "제목",
         "userName": "작성자명",
-        "createdAt": "YYYY-MM-DD HH:mm:ss",
-        "editedAt": "YYYY-MM-DD HH:mm:ss"
+        "modifiedAt": "YYYY-MM-DD HH:mm:ss"
     },
     ...
 ]
@@ -139,8 +134,7 @@
 |1|게시글 고유 번호|scheduleId|long|x|AUTO-INCREMENT|
 |2|제목|title|String|x|20글자 제한|
 |3|작성자명|userName|String|x|20글자 제한|
-|4|작성일|createdAt|String|x|YYYY-MM-DD HH:mm:ss|
-|5|수정일|editedAt|String|x|YYYY-MM-DD HH:mm:ss|
+|5|수정일|modifiedAt|String|x|YYYY-MM-DD HH:mm:ss|
 
 
 </details>
@@ -441,5 +435,5 @@
 
 
 
-## 4. Postman API 명세서
-https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/documentation/39355348-3b4eb661-11b8-4878-8829-ce1b5fd04a5a
+## 3. Postman API 명세서
+[https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/documentation/39355348-3b4eb661-11b8-4878-8829-ce1b5fd04a5a](https://identity.getpostman.com/handover/multifactor?user=39355348&handover_token=d3a66daf-c21b-4ae2-a5fc-1258ececbee0)
