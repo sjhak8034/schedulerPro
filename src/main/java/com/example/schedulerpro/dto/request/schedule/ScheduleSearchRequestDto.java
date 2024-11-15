@@ -9,7 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 
 @Getter
-@RequiredArgsConstructor
+
 public class ScheduleSearchRequestDto {
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -19,4 +19,14 @@ public class ScheduleSearchRequestDto {
     private final LocalDateTime endDate;
     @NotNull
     private final Long userId;
+    public ScheduleSearchRequestDto(){
+        this.startDate = LocalDateTime.now();
+        this.endDate = LocalDateTime.now().plusDays(1);
+        this.userId = 1L;
+    }
+    public ScheduleSearchRequestDto(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.userId = userId;
+    }
 }

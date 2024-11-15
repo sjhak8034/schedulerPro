@@ -1,12 +1,18 @@
 package com.example.schedulerpro.dto.response.schedule;
 
 import com.example.schedulerpro.entity.Schedule;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
+@Getter
 public class ScheduleSearchResponseDto {
-    private final List<Schedule> schedules;
+    private final String title;
+    private final String userName;
+    private final LocalDateTime modifiedAt;
+    public ScheduleSearchResponseDto(Schedule schedule) {
+        this.title = schedule.getTitle();
+        this.userName = schedule.getUser_name();
+        this.modifiedAt = schedule.getModifiedAt();
+    }
 }

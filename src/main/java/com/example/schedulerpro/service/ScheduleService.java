@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -66,12 +67,13 @@ public class ScheduleService {
         if (!Objects.equals(user_id, dto.getUserId())){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "유저 아이디가 일치하지 않습니다");
         }
-        scheduleRepository.deleteById(dto.getUserId());
+        scheduleRepository.deleteById(dto.getScheduleId());
         return new ScheduleDeleteResponseDto(schedule.getSchedule_id());
     }
     public ScheduleModifyResponseDto updateSchedule(ScheduleModifyServiceDto dto) {
         Schedule schedule = scheduleRepository.findByScheduleId(dto.getScheduleId());
         Long user_id = schedule.getUser().getUser_id();
+        schedule.update(dto.getTitle(), dto.getContent());
         if (!Objects.equals(user_id, dto.getUserId())){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "유저 아이디가 일치하지 않습니다");
         }
@@ -85,8 +87,12 @@ public class ScheduleService {
                 schedule.getModifiedAt()
         );
     }
-    public ScheduleSearchResponseDto getScheduleList(ScheduleSearchServiceDto dto) {
+    public List<ScheduleSearchResponseDto> getScheduleList(ScheduleSearchServiceDto dto) {
         List<Schedule> scheduleList = scheduleRepository.findByDate(dto.getUserId(),dto.getStartDate(),dto.getEndDate());
-        return new ScheduleSearchResponseDto(scheduleList);
+        List<ScheduleSearchResponseDto> scheduleSearchResponseDtoList = new ArrayList<>();
+        for(Schedule schedule: scheduleList ){
+            scheduleSearchResponseDtoList.add(new ScheduleSearchResponseDto(schedule));
+        }
+        return scheduleSearchResponseDtoList;
     }
 }

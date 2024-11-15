@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public class ScheduleModifyRequestDto {
     @NotNull
     @Size(min = 1, max = 20)
@@ -14,8 +13,15 @@ public class ScheduleModifyRequestDto {
     @NotNull
     @Size(min = 1, max = 2000)
     private final String content;
-    @NotNull
-    @Size(min = 1, max = 20)
-    private final String userName;
 
+    public ScheduleModifyRequestDto() {
+        this.title = "";
+        this.content = "";
+
+    }
+    public ScheduleModifyRequestDto(String title, String content, String userName) {
+        this.title = title;
+        this.content = content;
+
+    }
 }
