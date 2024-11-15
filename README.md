@@ -436,4 +436,4 @@
 
 
 ## 3. Postman API 명세서
-[[https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/documentation/39355348-3b4eb661-11b8-4878-8829-ce1b5fd04a5a](https://identity.getpostman.com/handover/multifactor?user=39355348&handover_token=d3a66daf-c21b-4ae2-a5fc-1258ececbee0)](https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/collection/39355348-702d96ac-12e7-4eb5-91b9-23d6323b777a)
+[[[https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/documentation/39355348-3b4eb661-11b8-4878-8829-ce1b5fd04a5a](https://identity.getpostman.com/handover/multifactor?user=39355348&handover_token=d3a66daf-c21b-4ae2-a5fc-1258ececbee0)](https://web.postman.co/workspace/dc9a47b3-2ced-4fb4-818d-ef16a3835a45/collection/39355348-702d96ac-12e7-4eb5-91b9-23d6323b777a)](https://documenter.getpostman.com/view/39355348/2sAY55by19)
