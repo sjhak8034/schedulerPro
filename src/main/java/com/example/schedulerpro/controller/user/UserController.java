@@ -13,6 +13,7 @@ import com.example.schedulerpro.dto.service.user.UserModifyServiceDto;
 import com.example.schedulerpro.dto.service.user.UserSignInServiceDto;
 import com.example.schedulerpro.dto.service.user.UserSignUpServiceDto;
 import com.example.schedulerpro.service.UserService;
+import com.example.schedulerpro.service.UserServiceImpl;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,6 +33,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
@@ -43,8 +45,8 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserService userServiceimpl) {
+        this.userService = userServiceimpl;
 
     }
 
@@ -59,6 +61,11 @@ public class UserController {
         FieldError fieldError = ex.getBindingResult().getFieldError();
         String errorMessage = fieldError != null ? fieldError.getDefaultMessage() : "유효성 검사 실패";
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> handleValidationExceptions(MethodArgumentTypeMismatchException ex) {
+        log.error(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("유효성 검사 실패");
     }
 
     @GetMapping("/sign-in")
@@ -102,9 +109,7 @@ public class UserController {
     @PutMapping("/profile")
     public ResponseEntity<UserModifyResponseDto> modify(@Validated @RequestBody UserModifyRequestDto dto, BindingResult bindingResult,
                                                         HttpServletRequest request, HttpServletResponse response) throws IOException, ResponseStatusException {
-        // body값이 요구사항과 맞지않는경우 에러 발생
-        ErrorLogger.log(bindingResult);
-        // Session에 로그인dl 되어있는지 확인
+
         HttpSession session = request.getSession(false);
         // 유저 정보를 변경
         UserModifyServiceDto serviceDto = new UserModifyServiceDto((Long) session.getAttribute(Const.LOGIN_USER), dto.getUserName(),

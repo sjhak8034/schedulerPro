@@ -16,9 +16,9 @@ import com.example.schedulerpro.dto.service.schedule.SchedulePostServiceDto;
 import com.example.schedulerpro.dto.service.schedule.ScheduleSearchServiceDto;
 import com.example.schedulerpro.dto.service.schedule.ScheduleViewServiceDto;
 import com.example.schedulerpro.service.ScheduleService;
+import com.example.schedulerpro.service.ScheduleServiceimpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -39,9 +39,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -52,8 +54,8 @@ public class ScheduleController {
 
     private final ScheduleService scheduleService;
     @Autowired
-    public ScheduleController(ScheduleService scheduleService) {
-        this.scheduleService = scheduleService;
+    public ScheduleController(ScheduleService scheduleServiceimpl) {
+        this.scheduleService = scheduleServiceimpl;
     }
 
     @ExceptionHandler(ResponseStatusException.class)
@@ -67,12 +69,16 @@ public class ScheduleController {
         String errorMessage = fieldError != null ? fieldError.getDefaultMessage() : "유효성 검사 실패";
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> handleValidationExceptions(MethodArgumentTypeMismatchException ex) {
+        log.error(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("유효성 검사 실패");
+    }
     //일정을 생성하기 위한 controller
     @PostMapping("/")
     public ResponseEntity<SchedulePostResponseDto> postSchedule(@Validated @RequestBody SchedulePostRequestDto dto,
                                                 BindingResult bindingResult, HttpServletRequest request) throws IOException, ResponseStatusException{
 
-        // body값이 요구사항과 맞지않는경우 에러 발생
 
         ErrorLogger.log(bindingResult);
         // userId를 불러오기 위해 session을 불러옴
@@ -87,8 +93,8 @@ public class ScheduleController {
 
     //
     @GetMapping("/")
-    public ResponseEntity<List<ScheduleSearchResponseDto>> searchSchedule(@RequestParam @NotNull LocalDateTime startDate, @NotNull @RequestParam LocalDateTime endDate,
-                                                                     HttpServletRequest request) throws IOException,ResponseStatusException {
+    public ResponseEntity<List<ScheduleSearchResponseDto>> searchSchedule(@RequestParam @NotNull LocalDate startDate, @NotNull @RequestParam LocalDate endDate,
+                                                                          HttpServletRequest request) throws IOException,ResponseStatusException {
         // userId를 불러오기 위해 session을 불러옴
         HttpSession session = request.getSession(false);
         // service 로 필요한 정보 전달
@@ -117,13 +123,6 @@ public class ScheduleController {
     @PutMapping("/{scheduleId}")
     public ResponseEntity<ScheduleModifyResponseDto> modifySchedule(@Validated @RequestBody ScheduleModifyRequestDto dto, @PathVariable(name = "scheduleId") Long scheduleId,
                                                                     BindingResult bindingResult, HttpServletRequest request) throws IOException, ResponseStatusException {
-        // body값이 요구사항과 맞지않는경우 에러 발생
-        log.info("유효성검사중");
-        try {
-            ErrorLogger.log(bindingResult);
-        }catch (ResponseStatusException e){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
 
         // userId를 불러오기 위해 session을 불러옴
         HttpSession session = request.getSession(false);

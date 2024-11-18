@@ -25,10 +25,4 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     @Query("select t from Schedule t where t.user.user_id = ?1 and t.modifiedAt between ?2 and ?3 order by t.modifiedAt desc ")
     List<Schedule> findByDate(Long userId, LocalDateTime startDate, LocalDateTime endDate);
 
-
-    default void deleteByScheduleId(Long scheduleId) {
-        this.deleteById(scheduleId);
-    }
-
-
 }

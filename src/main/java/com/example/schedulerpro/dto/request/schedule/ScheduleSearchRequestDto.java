@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -13,18 +14,18 @@ import java.time.LocalDateTime;
 public class ScheduleSearchRequestDto {
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private final LocalDateTime startDate;
+    private final LocalDate startDate;
     @NotNull
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private final LocalDateTime endDate;
+    private final LocalDate endDate;
     @NotNull
     private final Long userId;
     private ScheduleSearchRequestDto(){
-        this.startDate = LocalDateTime.now();
-        this.endDate = LocalDateTime.now().plusDays(1);
+        this.startDate = LocalDate.now();
+        this.endDate = LocalDate.now().plusDays(1);
         this.userId = 1L;
     }
-    private ScheduleSearchRequestDto(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
+    private ScheduleSearchRequestDto(LocalDate startDate, LocalDate endDate, Long userId) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.userId = userId;
