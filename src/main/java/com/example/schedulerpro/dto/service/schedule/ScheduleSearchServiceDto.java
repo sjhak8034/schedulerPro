@@ -10,12 +10,10 @@ public class ScheduleSearchServiceDto {
     private final LocalDateTime startDate;
     private final LocalDateTime endDate;
     private final Long userId;
-    private ScheduleSearchServiceDto(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
+    public ScheduleSearchServiceDto(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.userId = userId;
     }
-    public static ScheduleSearchServiceDto getInstance(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
-        return new ScheduleSearchServiceDto(startDate, endDate, userId);
-    }
+
 }

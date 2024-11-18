@@ -14,12 +14,12 @@ public class ScheduleModifyRequestDto {
     @Size(min = 1, max = 2000)
     private final String content;
 
-    public ScheduleModifyRequestDto() {
+    private ScheduleModifyRequestDto() {
         this.title = "";
         this.content = "";
 
     }
-    public ScheduleModifyRequestDto(String title, String content, String userName) {
+    private ScheduleModifyRequestDto(String title, String content, String userName) {
         this.title = title;
         this.content = content;
 

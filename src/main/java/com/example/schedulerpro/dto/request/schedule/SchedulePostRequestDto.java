@@ -14,11 +14,11 @@ public class SchedulePostRequestDto {
     @NotNull
     @Size(min = 1, max = 2000)
     private final String content;
-    public SchedulePostRequestDto(){
+    private SchedulePostRequestDto(){
         this.title = "";
         this.content = "";
     }
-    public SchedulePostRequestDto(String title, String content) {
+    private SchedulePostRequestDto(String title, String content) {
         this.title = title;
         this.content = content;
     }

@@ -19,12 +19,12 @@ public class ScheduleSearchRequestDto {
     private final LocalDateTime endDate;
     @NotNull
     private final Long userId;
-    public ScheduleSearchRequestDto(){
+    private ScheduleSearchRequestDto(){
         this.startDate = LocalDateTime.now();
         this.endDate = LocalDateTime.now().plusDays(1);
         this.userId = 1L;
     }
-    public ScheduleSearchRequestDto(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
+    private ScheduleSearchRequestDto(LocalDateTime startDate, LocalDateTime endDate, Long userId) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.userId = userId;

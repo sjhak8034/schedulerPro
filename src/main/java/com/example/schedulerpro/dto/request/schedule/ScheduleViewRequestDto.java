@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 public class ScheduleViewRequestDto {
     @NotNull
     private final Long scheduleId;
-    public ScheduleViewRequestDto() { this.scheduleId = null; }
-    public ScheduleViewRequestDto(Long scheduleId) {
+    private ScheduleViewRequestDto() { this.scheduleId = null; }
+    private ScheduleViewRequestDto(Long scheduleId) {
         this.scheduleId = scheduleId;
     }
 }

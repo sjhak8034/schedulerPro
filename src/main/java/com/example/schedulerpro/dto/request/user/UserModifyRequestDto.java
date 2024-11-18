@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+
 public class UserModifyRequestDto {
     @NotNull
     @Size(min = 1, max = 20)
@@ -19,4 +19,16 @@ public class UserModifyRequestDto {
     @NotNull
     @Size(min = 1, max = 20)
     private final String password;
+
+    private UserModifyRequestDto(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+    private UserModifyRequestDto(){
+        this.userName = null;
+        this.email = null;
+        this.password = null;
+    }
+
 }

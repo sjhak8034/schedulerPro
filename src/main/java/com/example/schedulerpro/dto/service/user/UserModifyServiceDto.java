@@ -5,13 +5,16 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+
 public class UserModifyServiceDto {
     private final long userId;
     private final String userName;
     private final String password;
     private final String email;
-    public static UserModifyServiceDto getInstance(long userId, String userName, String password, String email) {
-        return new UserModifyServiceDto(userId, userName, password, email);
+    public UserModifyServiceDto(long userId, String userName, String password, String email) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
     }
 }

@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public class UserSignInRequestDto {
     @NotNull
     @Email
@@ -16,4 +15,12 @@ public class UserSignInRequestDto {
     @NotNull
     @Size(min = 1, max = 20)
     private final String password;
+    private UserSignInRequestDto() {
+        this.email = "";
+        this.password = "";
+    }
+    private UserSignInRequestDto(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

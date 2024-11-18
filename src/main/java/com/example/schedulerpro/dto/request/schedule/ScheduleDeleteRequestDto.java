@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ScheduleDeleteRequestDto {
     @NotNull
     private final Long scheduleId;
-    public ScheduleDeleteRequestDto() {
+    private ScheduleDeleteRequestDto() {
         this.scheduleId = null;
     }
-    public ScheduleDeleteRequestDto(@NotNull Long scheduleId) {
+    private ScheduleDeleteRequestDto(@NotNull Long scheduleId) {
         this.scheduleId = scheduleId;
     }
 }
