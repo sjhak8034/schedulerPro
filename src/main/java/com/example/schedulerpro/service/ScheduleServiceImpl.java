@@ -24,12 +24,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class ScheduleServiceimpl implements ScheduleService{
+public class ScheduleServiceImpl implements ScheduleService{
 
     private final ScheduleRepository scheduleRepository;
     private final UserRepository userRepository;
     @Autowired
-    public ScheduleServiceimpl(ScheduleRepository scheduleRepository, UserRepository userRepository) {
+    public ScheduleServiceImpl(ScheduleRepository scheduleRepository, UserRepository userRepository) {
         this.scheduleRepository = scheduleRepository;
         this.userRepository = userRepository;
     }

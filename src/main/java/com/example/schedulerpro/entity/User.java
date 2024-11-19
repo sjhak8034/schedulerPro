@@ -18,8 +18,8 @@ public class User extends BaseEntity {
 
     @Column( nullable = false, length = 20)
     private String user_name;
-
-    @Column(nullable = false, length = 20)
+    // 인코딩 된 비밀번호 저장
+    @Column(nullable = false, length = 60)
     private String password;
 
     @Column(nullable = false, unique = true)

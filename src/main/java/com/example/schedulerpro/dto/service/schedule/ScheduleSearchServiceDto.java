@@ -12,8 +12,8 @@ public class ScheduleSearchServiceDto {
     private final LocalDateTime endDate;
     private final Long userId;
     public ScheduleSearchServiceDto(LocalDate startDate, LocalDate endDate, Long userId) {
-        this.startDate = startDate.atTime(0, 0, 0);
-        this.endDate = endDate.atTime(0, 0, 0).plusDays(1);
+        this.startDate = startDate.atTime(0, 0, 0);// 0시 0분 0초 추가
+        this.endDate = endDate.atTime(0, 0, 0).plusDays(1);// 다음날 0 시 0분 0초로 바꿈
         this.userId = userId;
     }
 

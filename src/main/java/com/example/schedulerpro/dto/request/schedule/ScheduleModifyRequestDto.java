@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class ScheduleModifyRequestDto {
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 10)
     private final String title;
     @NotNull
     @Size(min = 1, max = 2000)

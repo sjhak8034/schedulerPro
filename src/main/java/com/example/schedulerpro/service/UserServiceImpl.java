@@ -1,5 +1,6 @@
 package com.example.schedulerpro.service;
 
+import com.example.schedulerpro.config.Encoder.PasswordEncoder;
 import com.example.schedulerpro.dto.response.user.UserModifyResponseDto;
 import com.example.schedulerpro.dto.response.user.UserSignInResponseDto;
 import com.example.schedulerpro.dto.response.user.UserSignUpResponseDto;
@@ -14,19 +15,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Objects;
-
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoderimpl) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoderimpl;
     }
     @Override
     public UserSignInResponseDto login(UserSignInServiceDto dto) {
         User user = userRepository.findByEmail(dto.getEmail()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"User Not Found"));
-        if(Objects.equals(dto.getPassword(), user.getPassword() )) {
+
+        if(passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
             return new UserSignInResponseDto(user.getUser_id(),user.getUser_name(),user.getEmail(),
                     user.getCreatedAt(),user.getModifiedAt());
         }
@@ -34,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public UserSignUpResponseDto register(UserSignUpServiceDto dto) {
-        User user = new User(dto.getUsername(),dto.getPassword(),dto.getEmail());
+        User user = new User(dto.getUsername(), passwordEncoder.encode(dto.getPassword()), dto.getEmail());
         try {
             userRepository.save(user);
         }catch (DataAccessException e){
@@ -45,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModifyResponseDto updateUser(UserModifyServiceDto dto) {
         User user = userRepository.findByUserId(dto.getUserId());
-        user.update(dto.getPassword(), dto.getUserName(), dto.getEmail());
+        user.update(passwordEncoder.encode(dto.getPassword()), dto.getUserName(), dto.getEmail());
         try {
             userRepository.save(user);
         }catch (DataAccessException e){

@@ -1,8 +1,6 @@
 package com.example.schedulerpro.dto.service.schedule;
 
-import com.example.schedulerpro.dto.request.schedule.ScheduleViewRequestDto;
 import lombok.Getter;
-import org.springframework.context.annotation.Bean;
 
 @Getter
 public class ScheduleViewServiceDto {

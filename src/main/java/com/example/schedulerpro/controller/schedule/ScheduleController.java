@@ -16,7 +16,6 @@ import com.example.schedulerpro.dto.service.schedule.SchedulePostServiceDto;
 import com.example.schedulerpro.dto.service.schedule.ScheduleSearchServiceDto;
 import com.example.schedulerpro.dto.service.schedule.ScheduleViewServiceDto;
 import com.example.schedulerpro.service.ScheduleService;
-import com.example.schedulerpro.service.ScheduleServiceimpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.constraints.Min;
@@ -44,7 +43,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j

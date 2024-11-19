@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class UserSignUpRequestDto {
     @NotNull
-    @Size(min = 1, max = 20)
+    @Size(min = 1, max = 4)
     private final String userName;
     @NotNull
     @Email
